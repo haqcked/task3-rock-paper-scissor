@@ -11,9 +11,11 @@ if (moves.length % 2 !== 1 || moves.length < 3 || new Set(moves).size !== moves.
 }
 
 const game = new Game(moves);
+const computerMove = game.generateComputerMove();
+const hmacKey = game.key;
 
-console.log("Welcome to the Rock-Paper-Scissors Game!");
-console.log("Let's play. Choose a move:");
+console.log(`HMAC: ${hmacKey}`);
+console.log("Available moves:");
 moves.forEach((move, index) => {
   console.log(`${index + 1} - ${move.charAt(0).toUpperCase() + move.slice(1)}`);
 });

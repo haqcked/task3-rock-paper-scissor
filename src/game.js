@@ -6,7 +6,10 @@ class Game {
   constructor(moves) {
     this.moves = moves;
     this.key = HMAC.generateKey();
-    this.computerMove = this.getRandomMove();
+  }
+
+  generateComputerMove() {
+    return this.getRandomMove();
   }
 
   getRandomMove() {
@@ -15,20 +18,19 @@ class Game {
   }
 
   play(userMove) {
-    const hmac = HMAC.calculateHMAC(this.computerMove, this.key);
-    const result = Rules.determineWinner(userMove, this.computerMove, this.moves);
+    const computerMove = this.generateComputerMove();
+    const hmac = HMAC.calculateHMAC(computerMove, this.key);
+    const result = Rules.determineWinner(userMove, computerMove, this.moves);
 
-    console.log(`HMAC: ${hmac}`);
+    // console.log(`HMAC: ${hmac}`);
+    console.log(`Computer move: ${computerMove.toUpperCase()}`);
 
     if (result === 'Draw') {
-      console.log(`Computer move: ${this.computerMove.toUpperCase()}`);
       console.log(`You ${result}!`);
-      console.log(`HMAC key: ${this.key}`);
     } else {
-      console.log(`Computer move: ${this.computerMove.toUpperCase()}`);
       console.log(`You ${result}!`);
-      console.log(`HMAC key: ${this.key}`);
     }
+    console.log(`HMAC key: ${this.key}`);
   }
 }
 

@@ -1,4 +1,3 @@
-// game.js
 const HMAC = require('./hmac');
 const Rules = require('./rules');
 const Table = require('./table');
@@ -22,11 +21,11 @@ class Game {
     console.log(`HMAC: ${hmac}`);
 
     if (result === 'Draw') {
-      console.log(`Computer move: ${this.computerMove}`);
+      console.log(`Computer move: ${this.computerMove.toUpperCase()}`);
       console.log(`You ${result}!`);
       console.log(`HMAC key: ${this.key}`);
     } else {
-      console.log(`Computer move: ${this.computerMove}`);
+      console.log(`Computer move: ${this.computerMove.toUpperCase()}`);
       console.log(`You ${result}!`);
       console.log(`HMAC key: ${this.key}`);
     }

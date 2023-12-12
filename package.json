@@ -12,5 +12,14 @@
   "dependencies": {
     "cli-table3": "^0.6.3",
     "crypto": "^1.0.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haqcked/task3-rock-paper-scissor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haqcked/task3-rock-paper-scissor/issues"
+  },
+  "homepage": "https://github.com/haqcked/task3-rock-paper-scissor#readme"
 }

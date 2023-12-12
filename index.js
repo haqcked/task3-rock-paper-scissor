@@ -5,7 +5,7 @@ const Table = require('./src/table');
 const moves = process.argv.slice(2);
 
 if (moves.length % 2 !== 1 || moves.length < 3 || new Set(moves).size !== moves.length) {
-  console.error('Incorrect arguments. Please provide an odd number >= 3 of non-repeating strings.');
+  console.error('Incorrect number of arguments. Please provide an odd number ( >= 3 ) of non-repeating strings.');
   console.error('Example: node index.js rock paper scissors');
   process.exit(1);
 }
@@ -15,7 +15,7 @@ const game = new Game(moves);
 console.log("Welcome to the Rock-Paper-Scissors Game!");
 console.log("Let's play. Choose a move:");
 moves.forEach((move, index) => {
-  console.log(`${index + 1} - ${move.toUpperCase()}`);
+  console.log(`${index + 1} - ${move.charAt(0).toUpperCase() + move.slice(1)}`);
 });
 console.log('0 - EXIT');
 console.log('9 - HELP');
@@ -33,7 +33,6 @@ rl.question('Your move: ', (userMove) => {
   }
 
   if (userMove === '9' || userMove.toLowerCase() === 'help') {
-    // Display the help table
     console.log(Table.generateTable(moves));
     rl.close();
     return;
@@ -42,12 +41,13 @@ rl.question('Your move: ', (userMove) => {
   const userMoveIndex = parseInt(userMove);
 
   if (isNaN(userMoveIndex) || userMoveIndex < 1 || userMoveIndex > moves.length) {
-    console.error('Invalid move. Please choose a valid move.');
+    console.error('Invalid move. Please choose a valid move (number).');
+    console.error('Please try again');
     rl.close();
     return;
   }
 
-  console.log(`You chose: ${moves[userMoveIndex - 1].charAt(0).toUpperCase() + moves[userMoveIndex - 1].slice(1)}`);
+  console.log(`You chose: ${moves[userMoveIndex - 1].toUpperCase()}`);
 
   game.play(userMoveIndex.toString());
   rl.close();
